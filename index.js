@@ -24,18 +24,20 @@ inquirer.prompt([
 ]).then((answers) => {
     console.log('Your SVG Logo has been generated!');
     const shapeColor = answers['shape-color'];
+    const textColor = answers['text-color'];
+    const textContent = answers['characters'];
 
     let shape;
     if (answers.shape === 'Circle') {
-        shape = new Circle(shapeColor, /* other necessary parameters */);
+        shape = new Circle(shapeColor);
     } else if (answers.shape === 'Triangle') {
-        shape = new Triangle(shapeColor, /* other necessary parameters */);
+        shape = new Triangle(shapeColor);
     } else if (answers.shape === 'Square') {
-        shape = new Square(shapeColor, /* other necessary parameters */);
+        shape = new Square(shapeColor);
     }
 
     // Generate the SVG logo using the selected shape
-    const svgLogo = shape.draw();
+    const svgLogo = shape.draw({ color: textColor, content: textContent });
 
     // Save the SVG to a file
     fs.writeFile('logo.svg', svgLogo, (err) => {
