@@ -1,6 +1,8 @@
 const inquirer = require('inquirer');
+const { Circle, Triangle, Square } = require('./lib/shapes.js');
+const fs = require('fs');
 
-inquirer.prompt(
+inquirer.prompt([
     {
         message: 'Please enter 3 characters:',
         name: 'characters'
@@ -19,4 +21,20 @@ inquirer.prompt(
         message: 'Please enter the shape color (name or hexadecimal):',
         name: 'shape-color'
     }
-)
+]).then((answers) => {
+    console.log('Your SVG Logo has been generated!');
+    const shapeColor = answers['shape-color'];
+
+    let shape;
+    if (answers.shape === 'Circle') {
+        shape = new Circle(shapeColor, /* other necessary parameters */);
+    } else if (answers.shape === 'Triangle') {
+        shape = new Triangle(shapeColor, /* other necessary parameters */);
+    } else if (answers.shape === 'Square') {
+        shape = new Square(shapeColor, /* other necessary parameters */);
+    }
+
+    // Generate the SVG logo using the selected shape
+    const svgLogo = shape.draw();
+    console.log(svgLogo);
+});
