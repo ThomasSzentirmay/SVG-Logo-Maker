@@ -36,5 +36,13 @@ inquirer.prompt([
 
     // Generate the SVG logo using the selected shape
     const svgLogo = shape.draw();
-    console.log(svgLogo);
+
+    // Save the SVG to a file
+    fs.writeFile('logo.svg', svgLogo, (err) => {
+        if (err) {
+            console.error('Failed to save SVG:', err);
+        } else {
+            console.log('SVG logo saved to logo.svg');
+        }
+    });
 });
