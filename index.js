@@ -2,10 +2,18 @@ const inquirer = require('inquirer');
 const { Circle, Triangle, Square } = require('./lib/shapes.js');
 const fs = require('fs');
 
+const validateInput = (name) => {
+    if (name.length > 3) {
+      return 'Please enter up to 3 characters only.';
+    }
+    return true;
+};
+
 inquirer.prompt([
     {
-        message: 'Please enter 3 characters:',
-        name: 'characters'
+        message: 'Please up to 3 characters:',
+        name: 'characters',
+        validate: validateInput
     },
     {
         message: 'Please enter the text color (name or hexadecimal):',
