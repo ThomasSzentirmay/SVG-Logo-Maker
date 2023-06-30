@@ -4,7 +4,7 @@
 
 This application will take four inputs: Three characters, text color, a shape, and the shapes color, and with those inputs, will generate the user an SVG logo for their profile picture or project logo. The project is coded in Node.JS, and uses dependancies like inquirer for user input, and jest for testing suites. Users can enter the text/shape color in the hexidecimal form, or just by entering the color name!
 
-Here is a walkthrough tutorial of the app: 
+Here is a walkthrough tutorial of the app: https://drive.google.com/file/d/1XzgoX0maZVJtt6HK5Hxba4vsJxwEYWlC/view?usp=sharing
 
 ## Installation
 
