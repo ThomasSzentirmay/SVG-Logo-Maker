@@ -31,4 +31,3 @@ Refer to 'License' in the project repository for further information on the limi
 ## Badges
 
 N/A
-
