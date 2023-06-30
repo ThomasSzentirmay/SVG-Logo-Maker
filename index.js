@@ -14,7 +14,7 @@ const validateInput = (name) => {
 // USER INPUT/SELECTION
 inquirer.prompt([
     {
-        message: 'Please up to 3 characters:',
+        message: 'Please enter up to 3 characters:',
         name: 'characters',
         validate: validateInput
     },
