@@ -1,7 +1,9 @@
+// PULL IN DEPENDANCIES AND SHAPES FILE
 const inquirer = require('inquirer');
 const { Circle, Triangle, Square } = require('./lib/shapes.js');
 const fs = require('fs');
 
+// VALIDATION FOR USERS TO ENTER 3 OR LESS CHARS FOR LOGO TEXT
 const validateInput = (name) => {
     if (name.length > 3) {
       return 'Please enter up to 3 characters only.';
@@ -9,6 +11,7 @@ const validateInput = (name) => {
     return true;
 };
 
+// USER INPUT/SELECTION
 inquirer.prompt([
     {
         message: 'Please up to 3 characters:',
@@ -30,7 +33,7 @@ inquirer.prompt([
         name: 'shape-color'
     }
 ]).then((answers) => {
-    console.log('Your SVG Logo has been generated!');
+    console.log('Generated logo.svg');
     const shapeColor = answers['shape-color'];
     const textColor = answers['text-color'];
     const textContent = answers['characters'];
@@ -44,10 +47,10 @@ inquirer.prompt([
         shape = new Square(shapeColor);
     }
 
-    // Generate the SVG logo using the selected shape
+    // GENERATE SVG WITH INPUTED COLOR AND TEXT
     const svgLogo = shape.draw({ color: textColor, content: textContent });
 
-    // Save the SVG to a file
+    // DAVING SVG TO FILE
     fs.writeFile('logo.svg', svgLogo, (err) => {
         if (err) {
             console.error('Failed to save SVG:', err);
